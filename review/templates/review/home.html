@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load ratings %}
 {% block content %}
     <p>Vous êtes connecté en tant que {{ request.user }}.</p>
 
@@ -20,9 +19,13 @@
         <div class="post">
             <h3>{{ review.user }} a publié une critique </h3>
             <h4>{{ review.date_created }}</h4>
-            <h2>{{ review.headline }} - {{ review.rating }}
+            <h2>{{ review.headline }} -
+                {% for i in "x"|ljust:review.rating %}
+                    <span>★</span>
+                {% endfor %}
 
             </h2>
+
             <p>{{ review.body }}</p>
 
             <p>Ticket - {{ review.ticket.user }}</p>
