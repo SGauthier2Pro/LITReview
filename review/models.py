@@ -24,19 +24,9 @@ class Ticket(models.Model):
 
 
 class Review(models.Model):
-
-    RATING_CHOICES = (
-        ('1', 1),
-        ('2', 2),
-        ('3', 3),
-        ('4', 4),
-        ('5', 5),
-    )
-
     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
     rating = models.PositiveIntegerField(max_length=1024,
                                          validators=[MinValueValidator(0), MaxValueValidator(5)],
-                                         choices=RATING_CHOICES,
                                          verbose_name='Note')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     headline = models.CharField(max_length=128, verbose_name='Titre')
