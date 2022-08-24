@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
 from . import forms, models
@@ -7,7 +7,8 @@ from . import forms, models
 @login_required
 def home(request):
     tickets = models.Ticket.objects.all()
-    return render(request, 'review/home.html', context={'tickets': tickets})
+    reviews = models.Review.objects.all()
+    return render(request, 'review/home.html', context={'tickets': tickets, 'reviews': reviews})
 
 
 @login_required
@@ -33,6 +34,7 @@ def create_ticket_review(request):
         if all([ticket_form.is_valid(), review_form.is_valid()]):
             ticket = ticket_form.save(commit=False)
             ticket.user = request.user
+            ticket.save()
             review = review_form.save(commit=False)
             review.user = request.user
             review.ticket = ticket
@@ -43,3 +45,9 @@ def create_ticket_review(request):
         'review_form': review_form,
     }
     return render(request, 'review/create_review_post.html', context=context)
+
+
+@login_required
+def view_review(request, review_id):
+    review = get_object_or_404(models.Review, id=review_id)
+    return render(request, 'review/view_review.html', {'review': review})

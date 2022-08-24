@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -43,7 +43,9 @@ urlpatterns = [
     path('posts/', review.views.home, name='posts'),
     path('abonnements/', review.views.home, name='abonnements'),
     path('ticket/create/', review.views.create_ticket, name='create_ticket'),
-    path('review/create/', review.views.create_ticket_review, name='create_ticket_review')
+    path('review/create/', review.views.create_ticket_review, name='create_ticket_review'),
+    path('review/<int:review_id>', review.views.view_review, name='view_review'),
+    path('ratings/', include('star_ratings.urls', namespace='ratings')),
 ]
 if settings.DEBUG:
     urlpatterns += static(
