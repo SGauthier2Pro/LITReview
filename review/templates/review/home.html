@@ -20,10 +20,13 @@
             <h3>{{ review.user }} a publié une critique </h3>
             <h4>{{ review.date_created }}</h4>
             <h2>{{ review.headline }} -
-                {% for i in "x"|ljust:review.rating %}
-                    <span>★</span>
+                {% for i in "x"|ljust:"5" %}
+                    {% if forloop.counter <= review.rating %}
+                        <span>★</span>
+                    {% else %}
+                        <span>☆</span>
+                    {% endif %}
                 {% endfor %}
-
             </h2>
 
             <p>{{ review.body }}</p>
