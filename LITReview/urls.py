@@ -43,8 +43,15 @@ urlpatterns = [
     path('posts/', review.views.home, name='posts'),
     path('abonnements/', review.views.home, name='abonnements'),
     path('ticket/create/', review.views.create_ticket, name='create_ticket'),
+    path('ticket/<int:ticket_id>', review.views.view_ticket, name='view_ticket'),
+    path('ticket/<int:ticket_id>/edit', review.views.edit_ticket, name='edit_ticket'),
+    path('ticket/<int:ticket_id>/delete', review.views.delete_ticket, name='delete_ticket'),
+    path('ticket/<int:ticket_id>/create_review',
+         review.views.create_review_from_ticket, name='create_review_from_ticket'),
     path('review/create/', review.views.create_ticket_review, name='create_ticket_review'),
     path('review/<int:review_id>', review.views.view_review, name='view_review'),
+    path('review/<int:review_id>/edit', review.views.edit_review, name='edit_review'),
+    path('review/<int:review_id>/delete', review.views.delete_review, name='delete_review'),
 ]
 if settings.DEBUG:
     urlpatterns += static(

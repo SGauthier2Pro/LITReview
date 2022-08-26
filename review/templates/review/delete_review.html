@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
+    <h2>Etes-vous sûr de vouloir supprimer votre critique</h2>
+
     <h3>{{ review.user }} a publié une critique </h3>
     <h4>{{ review.time_created }}</h4>
     <h2>{{ review.headline }} -
@@ -12,15 +14,18 @@
         {% endfor %}
     </h2>
     <p>{{ review.body }}</p>
-
-    <p>Ticket - {{ review.ticket.user }}</p>
+    <hr>
+    <p>{{ review.ticket.user }} a demandé un critique</p>
     <p>{{ review.ticket.title }}</p>
     <p>{{ review.ticket.description }}</p>
     {% if review.ticket.image %}
         <img src="{{ review.ticket.image.url }}">
     {% endif %}
-    {% if review.user == request.user %}
-        <a href="{% url 'edit_review' review.id %}">Modifier</a>
-        <a href="{% url 'delete_review' review.id %}">Supprimer</a>
-    {% endif %}
+    <hr>
+    <h3>Supprimer la critique ?</h3>
+    <form method="post">
+        {{ delete_form }}
+        {% csrf_token %}
+        <button type="submit" >Supprimer</button>
+    </form>
 {% endblock content %}

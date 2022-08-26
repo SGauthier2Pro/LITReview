@@ -7,19 +7,23 @@ from . import models
 RATING_CHOICES = (
     ('1', 1),
     ('2', 2),
-    ('3', 2),
+    ('3', 3),
     ('4', 4),
     ('5', 5)
 )
 
 
 class TicketForm(forms.ModelForm):
+    edit_ticket = forms.BooleanField(widget=forms.HiddenInput, initial=True)
+
     class Meta:
         model = models.Ticket
         fields = ['title', 'description', 'image']
 
 
 class ReviewForm(forms.ModelForm):
+    edit_review = forms.BooleanField(widget=forms.HiddenInput, initial=True)
+
     class Meta:
         model = models.Review
         fields = ['headline', 'rating', 'body']
@@ -27,3 +31,10 @@ class ReviewForm(forms.ModelForm):
             'rating': forms.RadioSelect(attrs={'class': 'inline'}, choices=RATING_CHOICES),
         }
 
+
+class DeleteReviewForm(forms.Form):
+    delete_review = forms.BooleanField(widget=forms.HiddenInput, initial=True)
+
+
+class DeleteTicketForm(forms.Form):
+    delete_ticket = forms.BooleanField(widget=forms.HiddenInput, initial=True)

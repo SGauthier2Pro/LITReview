@@ -1,46 +1,23 @@
 {% extends 'base.html' %}
+{% load post_extras %}
 {% block content %}
     <p>Vous êtes connecté en tant que {{ request.user }}.</p>
 
     <h2>Flux</h2>
+    <hr>
     <a href="{% url 'create_ticket' %}">Demander une critique</a>
     <a href="{% url 'create_ticket_review' %}">Créer une critique</a>
-    {% for ticket in tickets %}
-        <p>{{ ticket.title }}</p>
-        <p>{{ ticket.description }}</p>
-        {% if ticket.image %}
-            <img src="{{ ticket.image.url }}">
-        {% endif %}
-
-    {% endfor %}
-
-    <h2>Reviews</h2>
-    {% for review in reviews %}
-        <div class="post">
-            <h3>{{ review.user }} a publié une critique </h3>
-            <h4>{{ review.date_created }}</h4>
-            <h2>{{ review.headline }} -
-                {% for i in "x"|ljust:"5" %}
-                    {% if forloop.counter <= review.rating %}
-                        <span>★</span>
-                    {% else %}
-                        <span>☆</span>
-                    {% endif %}
-                {% endfor %}
-            </h2>
-
-            <p>{{ review.body }}</p>
-
-            <p>Ticket - {{ review.ticket.user }}</p>
-            <p>{{ review.ticket.title }}</p>
-            <p>{{ review.ticket.description }}</p>
-            {% if ticket.image %}
-                <img src="{{ review.ticket.image.url }}">
+    {% for instance in posts %}
+        {% if instance|model_type == 'Ticket' %}
+            {% include 'review/partials/ticket_snippet.html' with ticket=instance %}
+            {% if instance not in tickets_reviewed %}
+                <a href="{% url 'create_review_from_ticket' instance.id %}">Créer une critique</a>
             {% endif %}
-        </div>
+        {% elif instance|model_type == 'Review' %}
+            {% include 'review/partials/review_snippet.html' with review=instance %}
+        {% endif %}
     {% endfor %}
-
-
+    <hr>
     <p>
         Pour changer votre mot de passe cliquez <a href="{% url 'password_change' %}">ici</a>
     </p>

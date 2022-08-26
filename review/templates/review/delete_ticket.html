@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Etes-vous sûr de vouloir supprimer votre ticket ?</h2>
+    <hr>
+    <p>{{ ticket.user }} a demandé un critique</p>
+    <p>{{ ticket.title }}</p>
+    <p>{{ ticket.description }}</p>
+    {% if ticket.image %}
+        <img src="{{ ticket.image.url }}">
+    {% endif %}
+    <hr>
+    <h3>Supprimer le ticket ?</h3>
+    <form method="post">
+        {{ delete_form }}
+        {% csrf_token %}
+        <button type="submit" >Supprimer</button>
+    </form>
+{% endblock content %}
