@@ -2,6 +2,7 @@ from itertools import chain
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from . import forms, models
 
@@ -21,6 +22,19 @@ def home(request):
                                                         'tickets_reviewed': tickets_reviewed
                                                         }
                   )
+
+
+@login_required
+def own_posts(request):
+    tickets = models.Ticket.objects.filter(user=request.user)
+    reviews = models.Review.objects.filter(user=request.user)
+
+    posts = sorted(
+        chain(reviews, tickets),
+        key=lambda post: post.time_created,
+        reverse=True
+    )
+    return render(request, 'review/own_posts.html', context={'posts': posts})
 
 
 @login_required
@@ -152,3 +166,22 @@ def delete_review(request, review_id):
         'delete_form': delete_form,
     }
     return render(request, 'review/delete_review.html', context=context)
+
+
+@login_required
+def follow_user(request):
+
+    followings = models.UserFollows.objects.filter(user=request.user)
+    followed_by = models.UserFollows.objects.filter(followed_user=request.user)
+    follow_form = forms.FollowForm(initial={'user': request.user})
+    if request.method == 'POST':
+        follow_form = forms.FollowForm(request.POST)
+        if follow_form.is_valid():
+            follow_form.save()
+            return redirect('abonnements')
+    context = {
+        'follow_form': follow_form,
+        'followings': followings,
+        'followed_by': followed_by,
+    }
+    return render(request, 'review/follows.html', context=context)
