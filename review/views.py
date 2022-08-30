@@ -170,18 +170,42 @@ def delete_review(request, review_id):
 
 @login_required
 def follow_user(request):
-
     followings = models.UserFollows.objects.filter(user=request.user)
     followed_by = models.UserFollows.objects.filter(followed_user=request.user)
-    follow_form = forms.FollowForm(initial={'user': request.user})
+    follow_form = forms.FollowForm()
+    message = ''
     if request.method == 'POST':
         follow_form = forms.FollowForm(request.POST)
-        if follow_form.is_valid():
-            follow_form.save()
+        try:
+            followed_user = User.objects.get(username=request.POST['followed_username'])
+        except User.DoesNotExist:
+            followed_user = None
+
+        if followed_user and follow_form.is_valid():
+            models.UserFollows.objects.create(user=request.user, followed_user=followed_user)
             return redirect('abonnements')
+        else:
+            message = "l'utilisateur saisie n'existe pas !"
     context = {
         'follow_form': follow_form,
         'followings': followings,
         'followed_by': followed_by,
+        'message': message,
     }
     return render(request, 'review/follows.html', context=context)
+
+
+@login_required
+def unfollow_user(request, following_id):
+    following = get_object_or_404(models.UserFollows, id=following_id)
+    delete_form = forms.UnfollowForm()
+    if request.method == 'POST':
+        delete_form = forms.UnfollowForm(request.POST)
+        if delete_form.is_valid():
+            following.delete()
+            return redirect('abonnements')
+    context = {
+        'following': following,
+        'delete_form': delete_form,
+    }
+    return render(request, 'review/delete_user_following.html', context=context)

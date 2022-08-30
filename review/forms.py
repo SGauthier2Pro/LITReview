@@ -40,13 +40,12 @@ class DeleteTicketForm(forms.Form):
     delete_ticket = forms.BooleanField(widget=forms.HiddenInput, initial=True)
 
 
-class FollowForm(forms.ModelForm):
+class FollowForm(forms.Form):
+    followed_username = forms.CharField(empty_value="Nom d'utilisateur", required=False)
 
-    class Meta:
-        model = models.UserFollows
-        fields = ['user', 'followed_user']
-        widgets = {
-            'user': forms.HiddenInput(),
-            # 'followed_user': forms.Textarea(attrs={'cols': 80, 'rows': 1}),
-        }
+
+class UnfollowForm(forms.Form):
+    delete_user_following = forms.BooleanField(widget=forms.HiddenInput, initial=True)
+
+
 

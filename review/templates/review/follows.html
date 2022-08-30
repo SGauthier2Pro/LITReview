@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2>Suivre d'autres utilisateurs</h2>
+    <p>{{ message }}</p>
     <form method="post">
         {{ follow_form.as_p }}
         {% csrf_token %}
@@ -10,7 +11,7 @@
     <div class="followings">
         <ul>
             {% for followed in followings %}
-                <li>{{ followed.followed_user }} <a href="">Désabonner</a> </li>
+                <li>{{ followed.followed_user }} <a href="{% url 'unfollow_user' followed.id %}">Désabonner</a> </li>
             {% endfor %}
         </ul>
     </div>

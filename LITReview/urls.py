@@ -42,6 +42,7 @@ urlpatterns = [
     path('flux/', review.views.home, name='flux'),
     path('posts/', review.views.own_posts, name='own_posts'),
     path('abonnements/', review.views.follow_user, name='abonnements'),
+    path('abonnements/<int:following_id>/delete', review.views.unfollow_user, name='unfollow_user'),
     path('ticket/create/', review.views.create_ticket, name='create_ticket'),
     path('ticket/<int:ticket_id>', review.views.view_ticket, name='view_ticket'),
     path('ticket/<int:ticket_id>/edit', review.views.edit_ticket, name='edit_ticket'),
