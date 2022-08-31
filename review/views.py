@@ -3,15 +3,27 @@ from itertools import chain
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 from . import forms, models
 
 
 @login_required
 def home(request):
-    tickets = models.Ticket.objects.all()
+    followed_users = []
+    followings = models.UserFollows.objects.filter(user=request.user)
+    for following in followings:
+        followed_users.append(following.followed_user)
+
+    tickets = models.Ticket.objects.filter(
+        Q(user__in=followed_users) |
+        Q(user=request.user)
+    )
     tickets_reviewed = models.Ticket.objects.exclude(review=None)
-    reviews = models.Review.objects.all()
+    reviews = models.Review.objects.filter(
+        Q(user__in=followed_users) |
+        Q(user=request.user)
+    )
 
     posts = sorted(
         chain(reviews, tickets),
@@ -209,3 +221,4 @@ def unfollow_user(request, following_id):
         'delete_form': delete_form,
     }
     return render(request, 'review/delete_user_following.html', context=context)
+
