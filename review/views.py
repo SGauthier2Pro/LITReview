@@ -22,7 +22,8 @@ def home(request):
     tickets_reviewed = models.Ticket.objects.exclude(review=None)
     reviews = models.Review.objects.filter(
         Q(user__in=followed_users) |
-        Q(user=request.user)
+        Q(user=request.user) |
+        Q(ticket__in=tickets)
     )
 
     posts = sorted(
