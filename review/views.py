@@ -64,12 +64,6 @@ def create_ticket(request):
 
 
 @login_required
-def view_ticket(request, ticket_id):
-    ticket = get_object_or_404(models.Ticket, id=ticket_id)
-    return render(request, 'review/view_ticket.html', {'ticket': ticket})
-
-
-@login_required
 def edit_ticket(request, ticket_id):
     ticket = get_object_or_404(models.Ticket, id=ticket_id)
     edit_form = forms.TicketForm(instance=ticket)
@@ -141,12 +135,6 @@ def create_review_from_ticket(request, ticket_id):
         'review_form': review_form,
     }
     return render(request, 'review/create_review_from_ticket.html', context=context)
-
-
-@login_required
-def view_review(request, review_id):
-    review = get_object_or_404(models.Review, id=review_id)
-    return render(request, 'review/view_review.html', {'review': review})
 
 
 @login_required
