@@ -1,12 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-     <p>Inscrivez-vous maintenant <a href="{% url 'signup' %}"><button type="button">S'inscrire</button></a></p>
+    <div class="d-flex flex-row justify-content-around">
+        <div class="d-flex flex-column justify-content-center">
+            <p>Inscrivez-vous maintenant</p>
+            <a class="btn btn-secondary" href="{% url 'signup' %}">S'inscrire</a>
+        </div>
 
-    <p>Connectez-vous</p>
-    <p>{{ message }}</p>
-    <form method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <button type="submit" >Se connecter</button>
-    </form>
+        <div class="d-flex flex-column">
+            <p class="text-center">Connectez-vous</p>
+            <p class="text-center">{{ message }}</p>
+            <form method="post">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <div class="text-end">
+                    <button class="btn btn-secondary" type="submit" >Se connecter</button>
+                </div>
+            </form>
+        </div>
+    </div>
 {% endblock content %}

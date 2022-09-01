@@ -1,8 +1,0 @@
-.inline {
-    display: flex;
-    align-items: baseline;
-    justify-content: flex-start;
-    align-content: center;
-    flex-wrap: nowrap;
-    flex-direction: row;
-}
