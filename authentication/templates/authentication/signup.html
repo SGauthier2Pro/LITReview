@@ -2,9 +2,7 @@
 {% block content %}
     <div class="d-flex flex-column">
         <h2 class="text-center">Inscrivez-vous</h2>
-        {% if form.errors %}
-            <p class="text-center">{{ form.errors }}</p>
-        {% endif %}
+
         <form method="post">
             {{ form.as_p }}
             {% csrf_token %}

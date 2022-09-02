@@ -1,27 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h3>Suivre d'autres utilisateurs</h3>
-    <p>{{ message }}</p>
-    <form method="post">
-        {{ follow_form.as_p }}
-        {% csrf_token %}
-        <button class="btn btn-secondary" type="submit" >Envoyer</button>
-    </form>
-    <h3>Abonnements</h3>
-    <div class="followings">
-        <ul>
-            {% for followed in followings %}
-                <li>{{ followed.followed_user }} <a href="{% url 'unfollow_user' followed.id %}">Désabonner</a> </li>
-            {% endfor %}
-        </ul>
+    <h3 class="text-center">Suivre d'autres utilisateurs</h3>
+    <br>
+    <p class="text-center">{{ message }}</p>
+    <div class="justify-content-centered">
+        <form class="d-flex flex-row justify-content-around" method="post">
+            {{ follow_form.as_p }}
+            {% csrf_token %}
+            <button class="btn btn-secondary" type="submit">Envoyer</button>
+        </form>
     </div>
+    <br>
+    <h3>Abonnements</h3>
+    <table class="table table-success table-strip table-bordered">
+        <tbody>
+            {% for followed in followings %}
+            <tr>
+                <td>{{ followed.followed_user }}</td>
+                <td class="text-end"><a href="{% url 'unfollow_user' followed.id %}">Désabonner</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
     <h3>Abonnés</h3>
-    <div class="followings">
-        <ul>
+    <table class="table table-info table-strip table-bordered">
+        <tboby>
             {% for follower in followed_by %}
-                <li>{{ follower.user }}</li>
+            <tr>
+                <td>{{ follower.user }}</td>
+            </tr>
             {% endfor %}
-        </ul>
-    </div>
+        </tboby>
+    </table>
 {% endblock content %}

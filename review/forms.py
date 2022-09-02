@@ -41,7 +41,14 @@ class DeleteTicketForm(forms.Form):
 
 
 class FollowForm(forms.Form):
-    followed_username = forms.CharField(empty_value="Nom d'utilisateur", required=False)
+    followed_username = forms.CharField(
+        label='',
+        widget=forms.TextInput(
+            attrs={'placeholder': "Nom d'utilisateur",
+                   'size': '120',
+                   }
+        )
+    )
 
 
 class UnfollowForm(forms.Form):

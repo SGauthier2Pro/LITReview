@@ -20,12 +20,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 import authentication.views
+from authentication.forms import UserLoginForm
 import review.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', LoginView.as_view(
         template_name='authentication/login.html',
+        authentication_form=UserLoginForm,
         redirect_authenticated_user=True),
         name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),

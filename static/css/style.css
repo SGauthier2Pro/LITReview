@@ -19,6 +19,10 @@ section {
     margin-top: 110px;
 }
 
+::placeholder {
+   text-align: center;
+}
+
 /* header
 
 header {
