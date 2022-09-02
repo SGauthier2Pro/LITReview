@@ -3,34 +3,30 @@
     <h3 class="text-center">Suivre d'autres utilisateurs</h3>
     <br>
     <p class="text-center">{{ message }}</p>
-    <div class="justify-content-centered">
+    <div class="container-fluid text-center">
         <form class="d-flex flex-row justify-content-around" method="post">
-            {{ follow_form.as_p }}
+            <div class="p-2 flex-grow-1 align-self-center">{{ follow_form }}</div>
             {% csrf_token %}
-            <button class="btn btn-secondary" type="submit">Envoyer</button>
+            <div class="p-2"><button class="btn btn-secondary align-self-center" type="submit">Envoyer</button></div>
         </form>
     </div>
     <br>
     <h3>Abonnements</h3>
-    <table class="table table-success table-strip table-bordered">
-        <tbody>
+
             {% for followed in followings %}
-            <tr>
-                <td>{{ followed.followed_user }}</td>
-                <td class="text-end"><a href="{% url 'unfollow_user' followed.id %}">Désabonner</a></td>
-            </tr>
+            <div class="d-flex bg-success bg-opacity-10 border border-dark">
+                <div class="p-2 flex-grow-1 align-self-center">{{ followed.followed_user }}</div>
+                <div class="p-2 border-start border-dark"><a class="btn btn-success opacity-75" href="{% url 'unfollow_user' followed.id %}">Désabonner</a></div>
+            </div>
             {% endfor %}
-        </tbody>
-    </table>
+
 
     <h3>Abonnés</h3>
-    <table class="table table-info table-strip table-bordered">
-        <tboby>
+
             {% for follower in followed_by %}
-            <tr>
-                <td>{{ follower.user }}</td>
-            </tr>
+            <div class="d-flex bg-info bg-opacity-10 border border-dark">
+                <div class="p-2">{{ follower.user }}</div>
+            </div>
             {% endfor %}
-        </tboby>
-    </table>
+
 {% endblock content %}
