@@ -32,7 +32,13 @@ class ReviewForm(forms.ModelForm):
         model = models.Review
         fields = ['headline', 'rating', 'body']
         widgets = {
+            'headline': forms.TextInput(attrs={
+                'class': 'container-fluid'
+            }),
             'rating': forms.RadioSelect(choices=RATING_CHOICES),
+            'body': forms.Textarea(attrs={
+                'class': 'container-fluid'
+            })
         }
 
 

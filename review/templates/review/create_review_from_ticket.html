@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2 class="text-center">Créer un critique</h2>
+    <h2 class="text-center mb-4">Créer un critique</h2>
 
     <div class="d-flex flex-column">
         <div class="d-block border border-secondary p-2">
@@ -15,24 +15,23 @@
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ review_form.edit_review }}
-                <label for="{{ review_form.headline.id }}">Titre</label>
-                <div class="mb-3">
-                    <input type="text" name="{{ review_form.headline.name }}" id="review_form.headline.id">
+                <label class="ms-3" for="{{ review_form.headline.id }}">Titre</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ review_form.headline}}
                 </div>
-                <label>Note</label>
-                <div class="mb-3">
+                <label class="ms-3">Note</label>
+                <div class="ms-4 mb-3 p-2 container-fluid">
                     {% for choice in review_form.rating %}
                         <div class="form-check form-check-inline">
-
                             <label class="form-check-label" for="{{ choice.id_for_label }}">
                                 {{ choice.tag }} -{{choice.choice_label }}
                             </label>
                         </div>
                     {% endfor %}
                 </div>
-                <label for="{{ review_form.body.id }}">Commentaire</label>
-                <div class="mb-3">
-                    <input type="text" name="{{ review_form.body.name }}" id="review_form.body.id">
+                <label class="ms-3" for="{{ review_form.body.id }}">Commentaire</label>
+                <div class="ms-4 mb-3 p-2" >
+                    {{ review_form.body }}
                 </div>
                 <div class="text-end">
                     <input class="btn btn-secondary" type="submit" value="Envoyer">
