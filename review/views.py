@@ -130,6 +130,8 @@ def create_review_from_ticket(request, ticket_id):
             review.ticket = ticket
             review.save()
             return redirect('home')
+        else:
+            print(review_form.errors)
     context = {
         'ticket': ticket,
         'review_form': review_form,

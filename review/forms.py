@@ -22,13 +22,17 @@ class TicketForm(forms.ModelForm):
 
 
 class ReviewForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.label_suffix = ""  # Removes : as label suffix
+
     edit_review = forms.BooleanField(widget=forms.HiddenInput, initial=True)
 
     class Meta:
         model = models.Review
         fields = ['headline', 'rating', 'body']
         widgets = {
-            'rating': forms.RadioSelect(attrs={'class': 'inline'}, choices=RATING_CHOICES),
+            'rating': forms.RadioSelect(choices=RATING_CHOICES),
         }
 
 
