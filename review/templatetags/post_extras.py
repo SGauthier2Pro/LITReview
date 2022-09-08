@@ -1,3 +1,5 @@
+import datetime
+
 from django import template
 import locale
 
@@ -25,5 +27,5 @@ def get_poster_ticket(context, user):
 
 @register.filter
 def get_posted_at_display(posted_at):
-    locale.setlocale(locale.LC_ALL, 'fr_FR')
+    locale.setlocale(locale.LC_TIME, 'fr_FR')
     return f'{posted_at.strftime("%H:%M, %d %b %Y")}'

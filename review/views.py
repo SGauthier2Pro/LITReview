@@ -59,6 +59,7 @@ def create_ticket(request):
             ticket = ticket_form.save(commit=False)
             ticket.user = request.user
             ticket.save()
+            print(ticket.time_created)
             return redirect('home')
     return render(request, 'review/create_ticket.html', context={'ticket_form': ticket_form})
 

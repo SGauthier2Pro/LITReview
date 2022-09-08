@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% load post_extras %}
 {% block content %}
-    <p>Vous êtes connecté en tant que {{ request.user }}.</p>
-
     <div class="text-center">
         <a class="btn btn-secondary" href="{% url 'create_ticket' %}">Demander une critique</a>
         <a class="btn btn-secondary" href="{% url 'create_ticket_review' %}">Créer une critique</a>
@@ -23,8 +21,4 @@
             </div>
         {% endif %}
     {% endfor %}
-    <hr>
-    <p>
-        Pour changer votre mot de passe cliquez <a href="{% url 'password_change' %}">ici</a>
-    </p>
 {% endblock content %}
