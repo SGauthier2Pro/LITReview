@@ -3,16 +3,16 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, User
 
 from django import forms
 
-class SignupForm(UserCreationForm):
 
+class SignupForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update({'placeholder': "Nom d'utilisateur"})
+        self.fields['username'].widget.attrs.update({'size': '70%', 'placeholder': "Nom d'utilisateur"})
         self.fields['username'].label = ''
-        self.fields['password1'].widget.attrs.update({'placeholder': 'Mot de passe'})
+        self.fields['password1'].widget.attrs.update({'size': '70%', 'placeholder': 'Mot de passe'})
         self.fields['password1'].label = ''
         self.fields['password1'].help_text = ''
-        self.fields['password2'].widget.attrs.update({'placeholder': 'Confirmer mot de passe'})
+        self.fields['password2'].widget.attrs.update({'size': '70%', 'placeholder': 'Confirmer mot de passe'})
         self.fields['password2'].label = ''
         self.fields['password2'].help_text = ''
 
@@ -34,6 +34,7 @@ class UserLoginForm(AuthenticationForm):
         widget=forms.TextInput(
             attrs={
                 'class': 'text-center',
+                'size': '70%',
                 'placeholder': "Nom d'utilisateur"
             }
         )
@@ -42,6 +43,7 @@ class UserLoginForm(AuthenticationForm):
         widget=forms.PasswordInput(
             attrs={
                 'class': 'text-center',
+                'size': '70%',
                 'placeholder': "Mot de passe"
             }
         )

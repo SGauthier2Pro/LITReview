@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="d-flex flex-column">
-        <h2 class="text-center">Inscrivez-vous</h2>
+    <div class="container-fluid d-flex flex-column w-50">
+        <h2 class="text-center mb-4">Inscrivez-vous</h2>
 
         <form method="post">
-            {{ form.as_p }}
+            <div class="text-center">
+                {{ form.as_p }}
+            </div>
             {% csrf_token %}
             <div class="text-end">
                 <a href="{% url 'login' %}"><button class="btn btn-secondary" type="button">Retourner</button></a>
