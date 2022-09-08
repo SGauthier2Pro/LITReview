@@ -1,10 +1,57 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Modifier votre ticket</h2>
+    <h2 class="text-center mb-4">Modifier votre ticket</h2>
 
-    <form method="post" enctype="multipart/form-data">
-        {{ edit_form.as_p }}
-        {% csrf_token %}
-        <button type="submit" >Sauvegarder</button>
-    </form>
+    <div class="d-block p-2">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ edit_form.edit_ticket }}
+            <label class="ms-3" for="{{ edit_form.title.id }}">Titre</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ edit_form.title}}
+            </div>
+            <label class="ms-3" for="{{ edit_form.description.id }}">Description</label>
+            <div class="ms-4 mb-3 p-2">
+                {{ edit_form.description}}
+            </div>
+            <label class="ms-3 mb-3" for="{{ edit_form.image.id }}">Image</label>
+            {% if ticket.image %}
+                <div class="ms-4 mb-3 p-2">
+                    <img src="{{ ticket.image.url }}">
+                </div>
+            {% endif %}
+            <div class="ms-4 mb-3 p-2">
+                {{ edit_form.image}}
+            </div>
+
+            <div class="text-end">
+                <input class="btn btn-secondary mb-4" type="submit" value="Envoyer">
+            </div>
+        </form>
+    </div>
 {% endblock content %}
+
+<!--
+<div class="d-flex flex-column mb-4">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ ticket_form.edit_ticket }}
+        <label class="ms-3" for="{{ ticket_form.title.id }}">Titre</label>
+        <div class="ms-4 mb-3 p-2">
+            {{ ticket_form.title}}
+        </div>
+        <label class="ms-3" for="{{ ticket_form.description.id }}">Description</label>
+        <div class="ms-4 mb-3 p-2">
+            {{ ticket_form.description}}
+        </div>
+        <label class="ms-3" for="{{ ticket_form.image.id }}">Image</label>
+        <div class="ms-4 mb-3 p-2">
+            {{ ticket_form.image}}
+        </div>
+
+        <div class="text-end">
+            <input class="btn btn-secondary mb-4" type="submit" value="Envoyer">
+        </div>
+    </form>
+</div>
+-->

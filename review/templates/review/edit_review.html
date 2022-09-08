@@ -1,17 +1,42 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Modifier votre critique</h2>
+    <h2 class="text-center mb-4">Modifier votre critique</h2>
 
-    <p>Vous êtes en train de poster en réponse à</p>
-    <p>{{ review.ticket.user }} a demandé un critique</p>
-    <p>{{ review.ticket.title }}</p>
-    <p>{{ review.ticket.description }}</p>
-    {% if review.ticket.image %}
-        <img src="{{ review.ticket.image.url }}">
-    {% endif %}
-    <form method="post">
-        {{ edit_form.as_p }}
-        {% csrf_token %}
-        <button type="submit" >Sauvegarder</button>
-    </form>
+    <div class="d-flex flex-column mb-4">
+        <div class="d-block border border-secondary p-2">
+            <p>Vous êtes en train de poster en réponse à </p>
+            <div class="border border-secondary m-4 p-2">
+                {% include 'review/partials/ticket_snippet.html' with ticket=review.ticket %}
+            </div>
+        </div>
+        <div class="d-block border border-secondary p-2">
+            <p>Critique</p>
+            {{ edit_form.error }}
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ edit_form.edit_review }}
+                <label class="ms-3" for="{{ edit_form.headline.id }}">Titre</label>
+                <div class="ms-4 mb-3 p-2">
+                    {{ edit_form.headline}}
+                </div>
+                <label class="ms-3">Note</label>
+                <div class="ms-4 mb-3 p-2 container-fluid">
+                    {% for choice in edit_form.rating %}
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label" for="{{ choice.id_for_label }}">
+                                {{ choice.tag }} -{{choice.choice_label }}
+                            </label>
+                        </div>
+                    {% endfor %}
+                </div>
+                <label class="ms-3" for="{{ edit_form.body.id }}">Commentaire</label>
+                <div class="ms-4 mb-3 p-2" >
+                    {{ edit_form.body }}
+                </div>
+                <div class="text-end">
+                    <input class="btn btn-secondary m-4" type="submit" value="Envoyer">
+                </div>
+            </form>
+        </div>
+    </div>
 {% endblock content %}

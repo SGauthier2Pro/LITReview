@@ -2,7 +2,7 @@
 {% block content %}
     <h2 class="text-center mb-4">Créer un critique</h2>
 
-    <div class="d-flex flex-column">
+    <div class="d-flex flex-column mb-4">
         <div class="d-block border border-secondary p-2">
             <p>Vous êtes en train de poster en réponse à </p>
             <div class="border border-secondary m-4 p-2">
@@ -34,9 +34,9 @@
                     {{ review_form.body }}
                 </div>
                 <div class="text-end">
-                    <input class="btn btn-secondary" type="submit" value="Envoyer">
+                    <input class="btn btn-secondary mb-4" type="submit" value="Envoyer">
                 </div>
             </form>
         </div>
-</div>
+    </div>
 {% endblock content %}

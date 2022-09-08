@@ -52,15 +52,15 @@ def own_posts(request):
 
 @login_required
 def create_ticket(request):
-    form = forms.TicketForm()
+    ticket_form = forms.TicketForm()
     if request.method == 'POST':
-        form = forms.TicketForm(request.POST, request.FILES)
-        if form.is_valid():
-            ticket = form.save(commit=False)
+        ticket_form = forms.TicketForm(request.POST, request.FILES)
+        if ticket_form.is_valid():
+            ticket = ticket_form.save(commit=False)
             ticket.user = request.user
             ticket.save()
             return redirect('home')
-    return render(request, 'review/create_ticket.html', context={'form': form})
+    return render(request, 'review/create_ticket.html', context={'ticket_form': ticket_form})
 
 
 @login_required

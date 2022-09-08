@@ -14,11 +14,23 @@ RATING_CHOICES = (
 
 
 class TicketForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.label_suffix = ""  # Removes : as label suffix
+
     edit_ticket = forms.BooleanField(widget=forms.HiddenInput, initial=True)
 
     class Meta:
         model = models.Ticket
         fields = ['title', 'description', 'image']
+        widgets = {
+            'title': forms.TextInput(attrs={
+                'class': 'container-fluid'
+            }),
+            'description': forms.Textarea(attrs={
+                'class': 'container-fluid'
+            })
+        }
 
 
 class ReviewForm(forms.ModelForm):

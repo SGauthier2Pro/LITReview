@@ -1,6 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Etes-vous sûr de vouloir supprimer votre critique</h2>
+    <h2 class="text-center mb-4">Supprimer votre critique ?</h2>
+    <div class="review border border-secondary m-4 p-2">
+        {% include 'review/partials/review_snippet.html' with review=review %}
+    </div>
+    <form method="post">
+        {{ delete_form }}
+        {% csrf_token %}
+        <div class="text-end">
+            <input class="btn btn-secondary mb-4" type="button" value="Annuler" onclick="history.go(-1)">
+            <input class="btn btn-secondary mb-4" type="submit" value="Supprimer">
+        </div>
+    </form>
+{% endblock content %}
+
+<!--
+
+<h2>Etes-vous sûr de vouloir supprimer votre critique</h2>
 
     <h3>{{ review.user }} a publié une critique </h3>
     <h4>{{ review.time_created }}</h4>
@@ -28,4 +44,5 @@
         {% csrf_token %}
         <button type="submit" >Supprimer</button>
     </form>
-{% endblock content %}
+
+-->
