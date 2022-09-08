@@ -68,7 +68,7 @@ class FollowForm(forms.Form):
         widget=forms.TextInput(
             attrs={'placeholder': "Nom d'utilisateur",
                    'size': '100%',
-                   'class': 'align-self-center'
+                   'class': 'container-fluid align-self-center'
                    }
         )
     )

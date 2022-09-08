@@ -19,6 +19,12 @@ section {
     margin-top: 110px;
 }
 
+@media screen and (max-width: 576px) {
+    section {
+    margin-top: 210px;
+}
+}
+
 ::placeholder {
    text-align: center;
 }
