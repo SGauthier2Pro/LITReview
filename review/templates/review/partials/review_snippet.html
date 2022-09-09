@@ -1,7 +1,7 @@
 {% load post_extras %}
-    <div class="row">
+    <div class="row me-3">
         <p class="col-6">{% get_poster_display review.user %} publié une critique </p>
-        <p class="col-6 text-end">{{ review.time_created|get_posted_at_display }}</p>
+        <p class="col-6 fs-6 text-end">{{ review.time_created|get_posted_at_display }}</p>
     </div>
     <h2 class="mb-3">
         <span class="fw-bold">{{ review.headline }}</span> -
