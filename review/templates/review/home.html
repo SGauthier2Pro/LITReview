@@ -7,7 +7,7 @@
     </div>
     {% for instance in posts %}
         {% if instance|model_type == 'Ticket' %}
-            <div class="ticket border border-secondary m-4 p-2">
+            <div class="ticket border border-secondary m-4 p-2 bg-white">
                 {% include 'review/partials/ticket_snippet.html' with ticket=instance %}
                 {% if instance not in tickets_reviewed %}
                     <div class="text-end">
@@ -16,7 +16,7 @@
                 {% endif %}
             </div>
         {% elif instance|model_type == 'Review' %}
-            <div class="review border border-secondary m-4 p-2">
+            <div class="review border border-secondary m-4 p-2 bg-white">
                 {% include 'review/partials/review_snippet.html' with review=instance %}
             </div>
         {% endif %}

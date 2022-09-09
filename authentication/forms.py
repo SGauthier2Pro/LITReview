@@ -33,7 +33,7 @@ class UserLoginForm(AuthenticationForm):
     username = UsernameField(
         widget=forms.TextInput(
             attrs={
-                'class': 'text-center',
+                'class': 'container-fluid text-center',
                 'size': '70%',
                 'placeholder': "Nom d'utilisateur"
             }
@@ -42,7 +42,7 @@ class UserLoginForm(AuthenticationForm):
     password = forms.CharField(
         widget=forms.PasswordInput(
             attrs={
-                'class': 'text-center',
+                'class': 'container-fluid text-center',
                 'size': '70%',
                 'placeholder': "Mot de passe"
             }

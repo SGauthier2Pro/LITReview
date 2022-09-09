@@ -6,6 +6,6 @@
     <form class="text-center" method="post">
         {{ delete_form }}
         {% csrf_token %}
-        <button class="btn btn-secondary" type="submit" >Confirmer</button>
+        {% include 'review/partials/validation_buttons_snippet.html' with word='Confirmer'%}
     </form>
 {% endblock content %}

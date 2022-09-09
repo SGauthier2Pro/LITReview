@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2 class="text-center mb-4">Créer un critique</h2>
-    <div class="d-flex flex-column mb-4">
+    <div class="d-flex flex-column mb-4 bg-white">
         <form method="post" enctype="multipart/form-data">
             <div class="d-block border border-secondary p-2">
                 <h3>Livre / Article</h3>
@@ -40,9 +40,7 @@
                 <div class="ms-4 mb-3 p-2" >
                     {{ review_form.body }}
                 </div>
-                <div class="text-end">
-                    <input class="btn btn-secondary mb-4" type="submit" value="Envoyer">
-                </div>
+                {% include 'review/partials/validation_buttons_snippet.html' with word='Envoyer' %}
             </div>
             {% csrf_token %}
 

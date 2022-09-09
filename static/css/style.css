@@ -14,11 +14,11 @@ body {
     box-sizing: border-box;
     background: #ffffff;
     color: #000000;
-    margin: 53px;
     width: 100%;
     background-image : url('../pictures/5425687.jpg');
     background-repeat: no-repeat ;
     background-position:top;
+    background-attachment: fixed;
 }
 
 section {
@@ -27,46 +27,14 @@ section {
 
 @media screen and (max-width: 576px) {
     section {
-    margin-top: 210px;
-}
+        margin-top: 210px;
+    }
 }
 
 ::placeholder {
    text-align: center;
 }
 
-/* header
-
-header {
-    width: auto;
-    height: 100px;
-    display: flex;
-    flex-direction: row;
-    background: #62757f;
-}
-
-header img {
-    width: 60px;
-    height: 60px;
-}
-
-header h1 {
-    color: black;
-    font-size: 3rem;
-}
-
-nav {
-    font-size: 24px;
-    margin-top: auto;
-    margin-right: 50px;
-    margin-left: auto;
-    margin-bottom: auto;
-}
-
-nav a {
-    text-decoration: none;
-}
-*/
 .inline {
     display: flex;
     align-items: baseline;

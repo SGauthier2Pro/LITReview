@@ -1,48 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2 class="text-center mb-4">Supprimer votre critique ?</h2>
-    <div class="review border border-secondary m-4 p-2">
+    <div class="review border border-secondary m-4 p-2 bg-white">
         {% include 'review/partials/review_snippet.html' with review=review %}
     </div>
     <form method="post">
         {{ delete_form }}
         {% csrf_token %}
-        <div class="text-end">
-            <input class="btn btn-secondary mb-4" type="button" value="Annuler" onclick="history.go(-1)">
-            <input class="btn btn-secondary mb-4" type="submit" value="Supprimer">
-        </div>
+        {% include 'review/partials/validation_buttons_snippet.html' with word='Supprimer'%}
     </form>
 {% endblock content %}
-
-<!--
-
-<h2>Etes-vous sûr de vouloir supprimer votre critique</h2>
-
-    <h3>{{ review.user }} a publié une critique </h3>
-    <h4>{{ review.time_created }}</h4>
-    <h2>{{ review.headline }} -
-        {% for i in "x"|ljust:"5" %}
-            {% if forloop.counter <= review.rating %}
-                <span>★</span>
-            {% else %}
-                <span>☆</span>
-            {% endif %}
-        {% endfor %}
-    </h2>
-    <p>{{ review.body }}</p>
-    <hr>
-    <p>{{ review.ticket.user }} a demandé un critique</p>
-    <p>{{ review.ticket.title }}</p>
-    <p>{{ review.ticket.description }}</p>
-    {% if review.ticket.image %}
-        <img src="{{ review.ticket.image.url }}">
-    {% endif %}
-    <hr>
-    <h3>Supprimer la critique ?</h3>
-    <form method="post">
-        {{ delete_form }}
-        {% csrf_token %}
-        <button type="submit" >Supprimer</button>
-    </form>
-
--->

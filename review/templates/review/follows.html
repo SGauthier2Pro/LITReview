@@ -14,9 +14,9 @@
     <h3>Abonnements</h3>
 
             {% for followed in followings %}
-            <div class="d-flex bg-success bg-opacity-10 border border-dark">
+            <div class="d-flex bg-warning bg-opacity-10 border border-dark mb-4">
                 <div class="p-2 flex-grow-1 align-self-center">{{ followed.followed_user }}</div>
-                <div class="p-2 border-start border-dark"><a class="btn btn-success opacity-75" href="{% url 'unfollow_user' followed.id %}">Désabonner</a></div>
+                <div class="p-2 border-start border-dark"><a class="btn btn-secondary opacity-75" href="{% url 'unfollow_user' followed.id %}">Désabonner</a></div>
             </div>
             {% endfor %}
 
@@ -24,7 +24,7 @@
     <h3>Abonnés</h3>
 
             {% for follower in followed_by %}
-            <div class="d-flex bg-info bg-opacity-10 border border-dark">
+            <div class="d-flex bg-secondary bg-opacity-10 border border-dark">
                 <div class="p-2">{{ follower.user }}</div>
             </div>
             {% endfor %}
