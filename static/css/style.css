@@ -12,7 +12,13 @@ html {
 
 body {
     box-sizing: border-box;
-    background: #fff;
+    background: #ffffff;
+    color: #000000;
+    margin: 53px;
+    width: 100%;
+    background-image : url('../pictures/5425687.jpg');
+    background-repeat: no-repeat ;
+    background-position:top;
 }
 
 section {
