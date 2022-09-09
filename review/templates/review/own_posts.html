@@ -14,7 +14,7 @@
                 </div>
             </div>
         {% elif instance|model_type == 'Review' %}
-            <div class="review border border-secondary m-4 p-2">
+            <div class="review border border-secondary m-4 p-2 bg-white">
                 {% include 'review/partials/review_snippet.html' with review=instance %}
                 <div class="text-end text-bottom">
                     <a class="btn btn-secondary mb-3 me-2" href="{% url 'edit_review' instance.id %}">Modifier</a>
