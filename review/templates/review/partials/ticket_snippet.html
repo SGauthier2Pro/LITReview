@@ -1,10 +1,12 @@
 {% load post_extras %}
-{% if from_review == 'yes' %}
-    <p>Ticket - {% get_poster_ticket ticket.user %}</p>
-{% else %}
-    <p>{% get_poster_display ticket.user %} demandé une critique</p>
-{% endif %}
-<p class="text-end">{{ ticket.time_created|get_posted_at_display }}</p>
+<div class="row">
+    {% if from_review == 'yes' %}
+        <p class="col-6">Ticket - {% get_poster_ticket ticket.user %}</p>
+    {% else %}
+        <p class="col-6">{% get_poster_display ticket.user %} demandé une critique</p>
+    {% endif %}
+    <p class="col-6 text-end">{{ ticket.time_created|get_posted_at_display }}</p>
+</div>
 <p>{{ ticket.title }}</p>
 <p>{{ ticket.description }}</p>
 {% if ticket.image %}

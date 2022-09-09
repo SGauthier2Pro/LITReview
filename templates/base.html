@@ -17,10 +17,10 @@
                         </a>
                         {% if user.is_authenticated %}
                             <div class="navbar-nav text-sm-end">
-                                <a class="nav-link" href="{% url 'flux' %}">Flux</a>
-                                <a class="nav-link" href="{% url 'own_posts' %}">Posts</a>
-                                <a class="nav-link" href="{% url 'abonnements' %}">Abonnements</a>
-                                <a class="nav-link" href="{% url 'logout' %}">Se déconnecter</a>
+                                <a class="nav-link fw-semibold" href="{% url 'flux' %}">Flux</a>
+                                <a class="nav-link fw-semibold" href="{% url 'own_posts' %}">Posts</a>
+                                <a class="nav-link fw-semibold" href="{% url 'abonnements' %}">Abonnements</a>
+                                <a class="nav-link fw-semibold" href="{% url 'logout' %}">Se déconnecter</a>
                             </div>
                         {% endif %}
                     </div>
