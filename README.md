@@ -205,7 +205,7 @@ In the root directory you will find two more important directories :
     ![static_css](https://user-images.githubusercontent.com/99419487/190028009-5060a468-2c33-4b11-9dea-562afa9b7681.png)  
   - js directory containing boostrap javascript and JQuery javascript :  
   ![static_js](https://user-images.githubusercontent.com/99419487/190028014-4ed230a3-9578-4bba-881c-316f833dec71.png)  
-  - Pictures directory containing the main background and the brand logo :
+  - Pictures directory containing the main background and the brand logo :  
   ![static_pictures](https://user-images.githubusercontent.com/99419487/190028018-165d3c4a-62cf-4158-b747-6affc5e7dc44.png)  
 - templates directory :  
   - This directory contains the main frame of the webapp, navbar and section block :  
