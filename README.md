@@ -163,7 +163,7 @@ This module contains :
     ![urls_static_path](https://user-images.githubusercontent.com/99419487/190018254-4879fae1-0f15-4a9d-89d4-c7d471b8ca00.png)
     
 ###2. Authentication :
-- This module contains all files linked to the signup and authentication system:
+- This module contains all files linked to the signup and authentication system :  
   ![content authentication](https://user-images.githubusercontent.com/99419487/189898305-7d7d868d-6ad4-4726-af5d-f911a6fff690.png)
   
 - You will find here 2 importants py files :
