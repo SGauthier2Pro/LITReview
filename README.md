@@ -1,8 +1,8 @@
-# P6_Sylvain_Gauthier_JustStreamIt
-P6_Sylvain_Gauthier_JustStreamIt
+# LITReview
+LITReview
 
-JustStreamIt is a web user interface to provide a list of movies to see according to ratings and categories
-It's a Front which work directly with API OCMovies 
+LITReview is a web application which allows users to shared some asks and reviews about books and articles.
+This webapp is developped under Jango Framework 
 ***
 ***
 ## Table of Contents
@@ -16,7 +16,7 @@ It's a Front which work directly with API OCMovies
 ## General Info
 ***
 This program is in version 1.0 and aimed the purpose why it has been created.
-I wait the result of the meeting with the askers to see if there was some modifications to brign to this version.
+I wait the result of the meeting with the askers to see if there was some modifications to bring to this version.
 
 ***
 ## Technologies
@@ -26,9 +26,9 @@ List of technologies used within this project :
 * [Python](https://www.python.org/downloads/release/python-3100/):  version 3.10.0
 * [PyCharm](https://www.jetbrains.com/fr-fr/pycharm/): version 2021.2.3
 * [git](https://git-scm.com/download/win): version 2.35.1.windows.2
-* [VS-Code](https://code.visualstudio.com/download): Version 1.68.0
-* [Live Sass Complier](https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass): version 3.0.0
-* [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer): version 5.7.5
+* [Django](https://www.djangoproject.com/): version 4.1
+* [Bootstrap](https://getbootstrap.com/): Version 5.2.0
+* [JQuery](https://jquery.com/): version 3.6.1
 
 ***
 ## Installation
@@ -97,23 +97,23 @@ You have now to clone the distant repository on your computer.
 1. type the following command in Gitbash console :
   
   ```
-        $ git clone https://github.com/SGauthier2Pro/P6_Sylvain_Gauthier_JustStreamIt.git
+        $ git clone https://github.com/SGauthier2Pro/LITReview.git
   ```
 2. Verify that you got the source directory opening an explorator and verifying that all files are in:
 
-![directory_JustStreamIt_UI](https://user-images.githubusercontent.com/99419487/173395213-52052a36-c26d-4723-811d-e9268f4e8c93.png)
-![css](https://user-images.githubusercontent.com/99419487/173056732-a10fd34c-51ab-45f8-b5dd-1fee93aa5703.png)
-![prefixed](https://user-images.githubusercontent.com/99419487/173056981-41bf3012-eae9-4737-9621-8e8c75621d2a.png)
-![fonts](https://user-images.githubusercontent.com/99419487/173056743-d2eed1bd-3491-4e19-870d-d6e8fc14ea93.png)
-![js](https://user-images.githubusercontent.com/99419487/173394389-4bc0b9d2-7407-462d-9f34-0766d628f4e9.png)
-![classes](https://user-images.githubusercontent.com/99419487/173394563-bab51fd7-d8af-47c6-b0ff-a51ced672f18.png)
-![functions](https://user-images.githubusercontent.com/99419487/173394578-d4b4613e-8075-4aa4-bfdf-c6b201809239.png)
-![pictures](https://user-images.githubusercontent.com/99419487/173394350-f6ef416d-aa34-49d0-b54f-c2a375923c08.png)
-![sass](https://user-images.githubusercontent.com/99419487/173056806-1ffd053a-0202-4f12-a613-593b6793e144.png)
-![Base](https://user-images.githubusercontent.com/99419487/173056868-454845d6-a8e3-44e6-9a7e-46ec6738a354.png)
-![Pages](https://user-images.githubusercontent.com/99419487/173394953-1a93ed42-eba6-44a7-823a-582579b574e4.png)
-![Layout](https://user-images.githubusercontent.com/99419487/173057031-3be4a4fb-39a3-4456-9b99-b1501db4ab37.png)
-![Utils](https://user-images.githubusercontent.com/99419487/173057058-6b834328-3c0b-40a9-a8f4-ac856712f0f0.png)
+![content_root](https://user-images.githubusercontent.com/99419487/189898295-e63ac66d-5160-4c3a-8585-ccc4cf853f6a.png)
+![content authentication](https://user-images.githubusercontent.com/99419487/189898305-7d7d868d-6ad4-4726-af5d-f911a6fff690.png)
+![authentication_template](https://user-images.githubusercontent.com/99419487/189898320-784a9368-e801-4660-8dda-8c30f0d475c9.png)
+![content_LITReview](https://user-images.githubusercontent.com/99419487/189898335-bcad09a7-418a-4b89-ac68-9af9b005ef3e.png)
+![content_review](https://user-images.githubusercontent.com/99419487/189898349-55c10aa0-9181-4227-98c2-be9db20e0b89.png)
+![content_review_migration](https://user-images.githubusercontent.com/99419487/189898363-39b3bf55-4233-4cc0-8357-cb8099506aa8.png)
+![content_review_templates](https://user-images.githubusercontent.com/99419487/189898378-9d2c7dbb-9eec-4541-bab1-7b528e6f18c9.png)
+![content_review_partials](https://user-images.githubusercontent.com/99419487/189898391-efcf18c1-9fa5-4c50-a459-a5214a9bab1c.png)
+![content_review_templatestags](https://user-images.githubusercontent.com/99419487/189898410-20b27be0-db2b-44ec-ae7b-e3d370985183.png)
+![content_static_css](https://user-images.githubusercontent.com/99419487/189898418-34b6593d-45c0-4471-b443-99c19ed8682c.png)
+![content_static_js](https://user-images.githubusercontent.com/99419487/189898430-8b00e5d9-9c2a-4611-a6b2-c8e5bc3d3faf.png)
+![content_static_pictures](https://user-images.githubusercontent.com/99419487/189898445-10a4b156-fd4a-4c89-a2c6-568e6f0d6965.png)
+![content_root_templates](https://user-images.githubusercontent.com/99419487/189898454-851706ff-ceca-4865-a75b-bbf64ff25d5b.png)
 
 
 ***
