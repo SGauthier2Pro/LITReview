@@ -174,7 +174,35 @@ This module contains :
   This directory contains the templates for those two functions
 
 ###3. Review :  
-- This is the main module of this webapp. It contains the following parts :
+- This is the main module of this webapp. It contains the following elements :
+  - admin.py :  
+    - this file contains le registering of all class from models to be managed from the server admin site.  
+  ![admin](https://user-images.githubusercontent.com/99419487/190025509-0d1e63a3-0eb8-40a3-8949-5f52dc8495b4.png)
+  - forms.py :  
+    - This file contains all forms for Tickets, Reviews and followings management  
+    ![review_forms](https://user-images.githubusercontent.com/99419487/190026051-4a8cd92f-20de-4cf6-9770-64a3a8ffe6c3.png)  
+  - models.py :  
+    - This file contains class models populating the database  
+    ![review_models](https://user-images.githubusercontent.com/99419487/190026262-4f9966a6-4e4f-4d6e-9204-df000a4cce5a.png)
+  - views.py : 
+    - This file contains all functions for each action made by user on webapp.  
+    ![review_views](https://user-images.githubusercontent.com/99419487/190026855-72a25ac1-0933-4f19-9479-39771fe215de.png)  
+  - templates directory :  
+    - This directory contains all html file and snippets of the webapp  
+    ![review_templates](https://user-images.githubusercontent.com/99419487/190027102-ea3e7dcf-a790-4556-9570-36bf7896c92f.png)  
+  
+###4. root directory:
+In the root directory you will find two more important directories :
+- static directory :
+  - css directory containing style.css and bootstrap css :  
+    ![static_css](https://user-images.githubusercontent.com/99419487/190028009-5060a468-2c33-4b11-9dea-562afa9b7681.png)  
+  - js directory containing boostrap javascript and JQuery javascript :  
+  ![static_js](https://user-images.githubusercontent.com/99419487/190028014-4ed230a3-9578-4bba-881c-316f833dec71.png)  
+  - Pictures directory containing the main background and the brand logo :
+  ![static_pictures](https://user-images.githubusercontent.com/99419487/190028018-165d3c4a-62cf-4158-b747-6affc5e7dc44.png)  
+- templates directory :  
+  - This directory contains the main frame of the webapp, navbar and section block :  
+  ![templates](https://user-images.githubusercontent.com/99419487/190028024-cab54127-1e49-4cdd-b93b-b8742ff4eda2.png)
   
 ***
 ## FAQs
