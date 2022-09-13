@@ -11,7 +11,7 @@
                 {% include 'review/partials/ticket_snippet.html' with ticket=instance %}
                 {% if instance not in tickets_reviewed %}
                     <div class="text-end">
-                        <a class="btn btn-secondary mb-2 me-4" href="{% url 'create_review_from_ticket' instance.id %}">Créer une critique</a>
+                        <a class="btn btn-secondary mt-2 mb-2 me-4" href="{% url 'create_review_from_ticket' instance.id %}">Créer une critique</a>
                     </div>
                 {% endif %}
             </div>

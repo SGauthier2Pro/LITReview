@@ -9,16 +9,16 @@
             <div class="ticket border border-secondary m-4 p-2 bg-white">
                 {% include 'review/partials/ticket_snippet.html' with ticket=instance %}
                 <div class="text-end text-bottom">
-                    <a class="btn btn-secondary mb-3 me-2" href="{% url 'edit_ticket' instance.id %}">Modifier</a>
-                    <a class="btn btn-secondary mb-3 me-4" href="{% url 'delete_ticket' instance.id %}">Supprimer</a>
+                    <a class="btn btn-secondary mt-2 mb-3 me-2" href="{% url 'edit_ticket' instance.id %}">Modifier</a>
+                    <a class="btn btn-secondary mt-2 mb-3 me-4" href="{% url 'delete_ticket' instance.id %}">Supprimer</a>
                 </div>
             </div>
         {% elif instance|model_type == 'Review' %}
             <div class="review border border-secondary m-4 p-2 bg-white">
                 {% include 'review/partials/review_snippet.html' with review=instance %}
                 <div class="text-end text-bottom">
-                    <a class="btn btn-secondary mb-3 me-2" href="{% url 'edit_review' instance.id %}">Modifier</a>
-                    <a class="btn btn-secondary mb-3 me-4" href="{% url 'delete_review' instance.id %}">Supprimer</a>
+                    <a class="btn btn-secondary mt-2 mb-3 me-2" href="{% url 'edit_review' instance.id %}">Modifier</a>
+                    <a class="btn btn-secondary mt-2 mb-3 me-4" href="{% url 'delete_review' instance.id %}">Supprimer</a>
                 </div>
             </div>
         {% endif %}
