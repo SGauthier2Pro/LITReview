@@ -137,7 +137,7 @@ You have now to clone the distant repository on your computer.
 This webapp is divided in 3 applications :
 
 ***
-###1. LITReview :
+### 1. LITReview :
 ***
 This module contains : 
    - The settings.py which has been modified in this way :
@@ -165,7 +165,7 @@ This module contains :
     ![urls_static_path](https://user-images.githubusercontent.com/99419487/190018254-4879fae1-0f15-4a9d-89d4-c7d471b8ca00.png)
 
 ***    
-###2. Authentication :
+### 2. Authentication :
 ***
 - This module contains all files linked to the signup and authentication system :  
   ![content authentication](https://user-images.githubusercontent.com/99419487/189898305-7d7d868d-6ad4-4726-af5d-f911a6fff690.png)
@@ -178,7 +178,7 @@ This module contains :
   This directory contains the templates for those two functions
 
 ***
-###3. Review :
+### 3. Review :
 ***
 - This is the main module of this webapp. It contains the following elements :
   - admin.py :  
@@ -197,7 +197,7 @@ This module contains :
     - This directory contains all html file and snippets of the webapp  
     ![review_templates](https://user-images.githubusercontent.com/99419487/190027102-ea3e7dcf-a790-4556-9570-36bf7896c92f.png)  
 ***  
-###4. root directory:
+### 4. root directory:
 ***
 In the root directory you will find two more important directories :
 - static directory :
