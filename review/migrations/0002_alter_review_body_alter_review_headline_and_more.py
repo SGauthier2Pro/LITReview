@@ -24,7 +24,10 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='review',
             name='rating',
-            field=models.PositiveIntegerField(choices=[('1', 1), ('2', 2), ('3', 3), ('4', 4), ('5', 5)], max_length=1024, validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(5)], verbose_name='Note'),
+            field=models.PositiveIntegerField(choices=[
+                ('1', 1), ('2', 2), ('3', 3), ('4', 4), ('5', 5)],
+                max_length=1024, validators=[django.core.validators.MinValueValidator(0),
+                                             django.core.validators.MaxValueValidator(5)], verbose_name='Note'),
         ),
         migrations.AlterField(
             model_name='ticket',

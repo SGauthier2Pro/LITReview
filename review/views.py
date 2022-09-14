@@ -213,4 +213,3 @@ def unfollow_user(request, following_id):
         'delete_form': delete_form,
     }
     return render(request, 'review/delete_user_following.html', context=context)
-

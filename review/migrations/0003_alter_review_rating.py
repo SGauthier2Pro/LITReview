@@ -14,6 +14,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='review',
             name='rating',
-            field=models.PositiveIntegerField(max_length=1024, validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(5)], verbose_name='Note'),
+            field=models.PositiveIntegerField(max_length=1024,
+                                              validators=[django.core.validators.MinValueValidator(0),
+                                                          django.core.validators.MaxValueValidator(5)],
+                                              verbose_name='Note'),
         ),
     ]

@@ -1,5 +1,4 @@
 from django import forms
-from django.utils.safestring import mark_safe
 
 from . import models
 
@@ -76,6 +75,3 @@ class FollowForm(forms.Form):
 
 class UnfollowForm(forms.Form):
     delete_user_following = forms.BooleanField(widget=forms.HiddenInput, initial=True)
-
-
-
