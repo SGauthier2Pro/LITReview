@@ -139,8 +139,17 @@ You have now to clone the distant repository on your computer.
 ***
 ## Starting LITReview
 ***
-- To access to LITReview application type ```http://172.0.0.1:8000/``` in your prefered navifator.  
-- To access to the web server admin page type ```http://172.0.0.1:8000/admin``` instead.  
+- To access to LITReview application type ```http://172.0.0.1:8000/``` in your prefered navifator.
+  - This is the list of users created in the database for testings :
+    - Adda_41
+    - Krum_daylite78
+    - pilou_pilou
+    - sabine_41
+    - sgauthier
+    - toto
+    - vlad_tepes
+      - They all use the same user password : LITReview01$
+- To access to the web server admin page type ```http://172.0.0.1:8000/admin``` instead, using your superuser login informations.  
 ***
 ## LITReview architecture
 ***
