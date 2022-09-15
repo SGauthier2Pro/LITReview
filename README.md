@@ -8,9 +8,11 @@ This webapp is developped under Jango Framework
 ## Table of Contents
 1. [General Info](#general-info)
 2. [Technologies](#technologies)
-3. [Installation](#installation)
-4. [Start JustStreamIt UI](#Start-JustStreamIt-UI)
-5. [FAQs](#faqs)
+3. [Installing Environment](#Installing-Environment)
+4. [Configuring Environment](#Configuring-Environment)
+5. [Starting LITReview](#Starting-LITReview)
+6. [LITReview architecture](#LITReview-architecture)
+7. [FAQs](#faqs)
 ***
 ***
 ## General Info
@@ -29,9 +31,11 @@ List of technologies used within this project :
 * [Django](https://www.djangoproject.com/): version 4.1
 * [Bootstrap](https://getbootstrap.com/): Version 5.2.0
 * [JQuery](https://jquery.com/): version 3.6.1
+* [flake8](https://pypi.org/project/flake8/): Version 4.0.0
+* [flake8-html](https://pypi.org/project/flake8-html/): version 0.4.2
 
 ***
-## Installating Environment
+## Installing Environment
 ***
 This process suggests that you have admin priviledges on you computer
 ### Python 3.10.0 installation
@@ -130,7 +134,12 @@ You have now to clone the distant repository on your computer.
 6. Create an admin user for your server with ```$ python manage.py createsuperuser``` on windows or ```$ python3 manage.py createsuperuser``` on macos or linux.
 7. Re-run migrations on database with ```$ python manage.py migrate``` on windows or ```$ python3 manage.py migrate```on macos or linux.
 8. Start the server with ```$ python manage.py runserver``` on windows or ```$ python3 manage.py runserver```on macos or linux.
- 
+
+***
+## Starting LITReview
+***
+- To access to LITReview application type ```http://172.0.0.1:8000/``` in your prefered navifator.  
+- To access to the web server admin page type ```http://172.0.0.1:8000/admin``` instead.  
 ***
 ## LITReview architecture
 ***
@@ -210,7 +219,16 @@ In the root directory you will find two more important directories :
 - templates directory :  
   - This directory contains the main frame of the webapp, navbar and section block :  
   ![templates](https://user-images.githubusercontent.com/99419487/190028024-cab54127-1e49-4cdd-b93b-b8742ff4eda2.png)
-  
+
+***
+## PEP8 reports
+***
+
+In order to generate the flake8-html report, type the following command from the program folder :
+
+```
+    flake8 --format=html --htmldir=flake8-report --exclude env ../LITReview
+```  
 ***
 ## FAQs
 ***
