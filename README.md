@@ -12,7 +12,8 @@ This webapp is developped under Jango Framework
 4. [Configuring Environment](#Configuring-Environment)
 5. [Starting LITReview](#Starting-LITReview)
 6. [LITReview architecture](#LITReview-architecture)
-7. [FAQs](#faqs)
+7. [PEP8 reports](#PEP8-reports)
+8. [FAQs](#faqs)
 ***
 ***
 ## General Info
