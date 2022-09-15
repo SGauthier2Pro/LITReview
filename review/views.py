@@ -31,9 +31,10 @@ def home(request):
         key=lambda post: post.time_created,
         reverse=True
     )
-    return render(request, 'review/home.html', context={'posts': posts,
-                                                        'tickets_reviewed': tickets_reviewed
-                                                        }
+    return render(request,
+                  'review/home.html',
+                  context={'posts': posts,
+                           'tickets_reviewed': tickets_reviewed}
                   )
 
 
@@ -47,7 +48,9 @@ def own_posts(request):
         key=lambda post: post.time_created,
         reverse=True
     )
-    return render(request, 'review/own_posts.html', context={'posts': posts})
+    return render(request,
+                  'review/own_posts.html',
+                  context={'posts': posts})
 
 
 @login_required
@@ -61,7 +64,9 @@ def create_ticket(request):
             ticket.save()
             print(ticket.time_created)
             return redirect('home')
-    return render(request, 'review/create_ticket.html', context={'ticket_form': ticket_form})
+    return render(request,
+                  'review/create_ticket.html',
+                  context={'ticket_form': ticket_form})
 
 
 @login_required
@@ -69,7 +74,9 @@ def edit_ticket(request, ticket_id):
     ticket = get_object_or_404(models.Ticket, id=ticket_id)
     edit_form = forms.TicketForm(instance=ticket)
     if request.method == 'POST':
-        edit_form = forms.TicketForm(request.POST, request.FILES, instance=ticket)
+        edit_form = forms.TicketForm(request.POST,
+                                     request.FILES,
+                                     instance=ticket)
         if edit_form.is_valid():
             edit_form.save()
             return redirect('home')
@@ -77,7 +84,9 @@ def edit_ticket(request, ticket_id):
         'ticket': ticket,
         'edit_form': edit_form,
     }
-    return render(request, 'review/edit_ticket.html', context=context)
+    return render(request,
+                  'review/edit_ticket.html',
+                  context=context)
 
 
 @login_required
@@ -93,7 +102,9 @@ def delete_ticket(request, ticket_id):
         'ticket': ticket,
         'delete_form': delete_form,
     }
-    return render(request, 'review/delete_ticket.html', context=context)
+    return render(request,
+                  'review/delete_ticket.html',
+                  context=context)
 
 
 @login_required
@@ -116,7 +127,9 @@ def create_ticket_review(request):
         'ticket_form': ticket_form,
         'review_form': review_form,
     }
-    return render(request, 'review/create_review_post.html', context=context)
+    return render(request,
+                  'review/create_review_post.html',
+                  context=context)
 
 
 @login_required
@@ -137,7 +150,9 @@ def create_review_from_ticket(request, ticket_id):
         'ticket': ticket,
         'review_form': review_form,
     }
-    return render(request, 'review/create_review_from_ticket.html', context=context)
+    return render(request,
+                  'review/create_review_from_ticket.html',
+                  context=context)
 
 
 @login_required
@@ -153,7 +168,9 @@ def edit_review(request, review_id):
         'review': review,
         'edit_form': edit_form,
     }
-    return render(request, 'review/edit_review.html', context=context)
+    return render(request,
+                  'review/edit_review.html',
+                  context=context)
 
 
 @login_required
@@ -169,7 +186,9 @@ def delete_review(request, review_id):
         'review': review,
         'delete_form': delete_form,
     }
-    return render(request, 'review/delete_review.html', context=context)
+    return render(request,
+                  'review/delete_review.html',
+                  context=context)
 
 
 @login_required
@@ -181,12 +200,15 @@ def follow_user(request):
     if request.method == 'POST':
         follow_form = forms.FollowForm(request.POST)
         try:
-            followed_user = User.objects.get(username=request.POST['followed_username'])
+            followed_user = User.objects.get(
+                username=request.POST['followed_username']
+            )
         except User.DoesNotExist:
             followed_user = None
 
         if followed_user and follow_form.is_valid():
-            models.UserFollows.objects.create(user=request.user, followed_user=followed_user)
+            models.UserFollows.objects.create(user=request.user,
+                                              followed_user=followed_user)
             return redirect('abonnements')
         else:
             message = "l'utilisateur saisie n'existe pas !"
@@ -196,7 +218,9 @@ def follow_user(request):
         'followed_by': followed_by,
         'message': message,
     }
-    return render(request, 'review/follows.html', context=context)
+    return render(request,
+                  'review/follows.html',
+                  context=context)
 
 
 @login_required
@@ -212,4 +236,6 @@ def unfollow_user(request, following_id):
         'following': following,
         'delete_form': delete_form,
     }
-    return render(request, 'review/delete_user_following.html', context=context)
+    return render(request,
+                  'review/delete_user_following.html',
+                  context=context)

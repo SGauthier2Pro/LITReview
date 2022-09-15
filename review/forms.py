@@ -17,7 +17,8 @@ class TicketForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.label_suffix = ""  # Removes : as label suffix
 
-    edit_ticket = forms.BooleanField(widget=forms.HiddenInput, initial=True)
+    edit_ticket = forms.BooleanField(widget=forms.HiddenInput,
+                                     initial=True)
 
     class Meta:
         model = models.Ticket
@@ -37,7 +38,8 @@ class ReviewForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.label_suffix = ""  # Removes : as label suffix
 
-    edit_review = forms.BooleanField(widget=forms.HiddenInput, initial=True)
+    edit_review = forms.BooleanField(widget=forms.HiddenInput,
+                                     initial=True)
 
     class Meta:
         model = models.Review
@@ -54,11 +56,13 @@ class ReviewForm(forms.ModelForm):
 
 
 class DeleteReviewForm(forms.Form):
-    delete_review = forms.BooleanField(widget=forms.HiddenInput, initial=True)
+    delete_review = forms.BooleanField(widget=forms.HiddenInput,
+                                       initial=True)
 
 
 class DeleteTicketForm(forms.Form):
-    delete_ticket = forms.BooleanField(widget=forms.HiddenInput, initial=True)
+    delete_ticket = forms.BooleanField(widget=forms.HiddenInput,
+                                       initial=True)
 
 
 class FollowForm(forms.Form):
@@ -74,4 +78,5 @@ class FollowForm(forms.Form):
 
 
 class UnfollowForm(forms.Form):
-    delete_user_following = forms.BooleanField(widget=forms.HiddenInput, initial=True)
+    delete_user_following = forms.BooleanField(widget=forms.HiddenInput,
+                                               initial=True)
