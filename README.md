@@ -131,15 +131,13 @@ You have now to clone the distant repository on your computer.
 2. Create a virtual environment for the project with ```$ python -m venv env``` on windows or ```$ python3 -m venv env``` on macos or linux.
 3. Activate the virtual environment with ```$ env\Scripts\activate.bat``` on windows or ```$ source env/bin/activate``` on macos or linux.
 4. Install project dependencies with ```$ pip install -r requirements.txt```
-5. Apply necessary migrations on database with ```$ python manage.py migrate``` on windows or ```$ python3 manage.py migrate```on macos or linux.
 6. Create an admin user for your server with ```$ python manage.py createsuperuser``` on windows or ```$ python3 manage.py createsuperuser``` on macos or linux.
-7. Re-run migrations on database with ```$ python manage.py migrate``` on windows or ```$ python3 manage.py migrate```on macos or linux.
 8. Start the server with ```$ python manage.py runserver``` on windows or ```$ python3 manage.py runserver```on macos or linux.
 
 ***
 ## Starting LITReview
 ***
-- To access to LITReview application type ```http://172.0.0.1:8000/``` in your prefered navifator.
+- To access to LITReview application type ```http://172.0.0.1:8000/``` in your prefered navigator.
   - This is the list of users created in the database for testings :
     - Adda_41
     - Krum_daylite78
@@ -215,6 +213,13 @@ This module contains :
   - templates directory :  
     - This directory contains all html file and snippets of the webapp  
     ![review_templates](https://user-images.githubusercontent.com/99419487/190027102-ea3e7dcf-a790-4556-9570-36bf7896c92f.png)  
+    - Partials directory :
+      - ticket_snippet.html the template displaying the tickets 
+      - review_snippet.html the template displaying the reviews
+      - validation_button_snippet.html the template displaying the validation button of creation forms  
+    - Templatetags directory :
+      - contains post_extras.py where you can find functions managing the displaying of name and dates in tickets and reviews  
+      ![post_extras py](https://user-images.githubusercontent.com/99419487/190521128-9d6b16db-54a6-4e71-9607-7de08f1cacb2.png)  
 ***  
 ### 4. root directory:
 ***
@@ -229,6 +234,7 @@ In the root directory you will find two more important directories :
 - templates directory :  
   - This directory contains the main frame of the webapp, navbar and section block :  
   ![templates](https://user-images.githubusercontent.com/99419487/190028024-cab54127-1e49-4cdd-b93b-b8742ff4eda2.png)
+
 
 ***
 ## PEP8 reports
