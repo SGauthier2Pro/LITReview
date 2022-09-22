@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2 class="text-center mb-4">Supprimer votre ticket ?</h2>
-    <div class="border border-secondary m-4 p-2 bg-white">
-        {% include 'review/partials/ticket_snippet.html' with ticket=ticket %}
-    </div>
-    <form method="post">
-        {{ delete_form }}
-        {% csrf_token %}
-        {% include 'review/partials/validation_buttons_snippet.html' with word='Supprimer'%}
-    </form>
+    {% if ticket.user == request.user %}
+        <h2 class="text-center mb-4">Supprimer votre ticket ?</h2>
+        <div class="border border-secondary m-4 p-2 bg-white">
+            {% include 'review/partials/ticket_snippet.html' with ticket=ticket %}
+        </div>
+        <form method="post">
+            {{ delete_form }}
+            {% csrf_token %}
+            {% include 'review/partials/validation_buttons_snippet.html' with word='Supprimer'%}
+        </form>
+    {% else %}
+        {% include 'review/access_denied.html' %}
+    {% endif %}
 {% endblock content %}

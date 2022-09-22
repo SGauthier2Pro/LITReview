@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2 class="text-center mb-4">Supprimer votre critique ?</h2>
-    <div class="review border border-secondary m-4 p-2 bg-white">
-        {% include 'review/partials/review_snippet.html' with review=review %}
-    </div>
-    <form method="post">
-        {{ delete_form }}
-        {% csrf_token %}
-        {% include 'review/partials/validation_buttons_snippet.html' with word='Supprimer'%}
-    </form>
+    {% if review.user == request.user %}
+        <h2 class="text-center mb-4">Supprimer votre critique ?</h2>
+        <div class="review border border-secondary m-4 p-2 bg-white">
+            {% include 'review/partials/review_snippet.html' with review=review %}
+        </div>
+        <form method="post">
+            {{ delete_form }}
+            {% csrf_token %}
+            {% include 'review/partials/validation_buttons_snippet.html' with word='Supprimer'%}
+        </form>
+    {% else %}
+        {% include 'review/access_denied.html' %}
+    {% endif %}
 {% endblock content %}
