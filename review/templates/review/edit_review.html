@@ -1,40 +1,51 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2 class="text-center mb-4">Modifier votre critique</h2>
 
-    <div class="d-flex flex-column mb-4 bg-white">
-        <div class="d-block border border-secondary p-2">
-            <p>Vous êtes en train de poster en réponse à </p>
-            <div class="border border-secondary m-4 p-2">
-                {% include 'review/partials/ticket_snippet.html' with ticket=review.ticket %}
+    {% if review.user == request.user %}
+        <h2 class="text-center mb-4">Modifier votre critique</h2>
+
+        <div class="d-flex flex-column mb-4 bg-white">
+            <div class="d-block border border-secondary p-2">
+                <p>Vous êtes en train de poster en réponse à </p>
+                <div class="border border-secondary m-4 p-2">
+                    {% include 'review/partials/ticket_snippet.html' with ticket=review.ticket %}
+                </div>
+            </div>
+            <div class="d-block border border-secondary p-2">
+                <p>Critique</p>
+                {{ edit_form.error }}
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ edit_form.edit_review }}
+                    <label class="ms-3" for="{{ edit_form.headline.id }}">Titre</label>
+                    <div class="ms-4 mb-3 p-2">
+                        {{ edit_form.headline}}
+                    </div>
+                    <label class="ms-3">Note</label>
+                    <div class="ms-4 mb-3 p-2 container-fluid">
+                        {% for choice in edit_form.rating %}
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label" for="{{ choice.id_for_label }}">
+                                    {{ choice.tag }} -{{choice.choice_label }}
+                                </label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <label class="ms-3" for="{{ edit_form.body.id }}">Commentaire</label>
+                    <div class="ms-4 mb-3 p-2" >
+                        {{ edit_form.body }}
+                    </div>
+                    {% include 'review/partials/validation_buttons_snippet.html' with word='Envoyer' %}
+                </form>
             </div>
         </div>
-        <div class="d-block border border-secondary p-2">
-            <p>Critique</p>
-            {{ edit_form.error }}
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ edit_form.edit_review }}
-                <label class="ms-3" for="{{ edit_form.headline.id }}">Titre</label>
-                <div class="ms-4 mb-3 p-2">
-                    {{ edit_form.headline}}
-                </div>
-                <label class="ms-3">Note</label>
-                <div class="ms-4 mb-3 p-2 container-fluid">
-                    {% for choice in edit_form.rating %}
-                        <div class="form-check form-check-inline">
-                            <label class="form-check-label" for="{{ choice.id_for_label }}">
-                                {{ choice.tag }} -{{choice.choice_label }}
-                            </label>
-                        </div>
-                    {% endfor %}
-                </div>
-                <label class="ms-3" for="{{ edit_form.body.id }}">Commentaire</label>
-                <div class="ms-4 mb-3 p-2" >
-                    {{ edit_form.body }}
-                </div>
-                {% include 'review/partials/validation_buttons_snippet.html' with word='Envoyer' %}
-            </form>
+    {% else %}
+        <h2 class="text-center mb-4">Accès non-autorisé</h2>
+        <div>
+            <h3 class="text-center mb-4">Vous n'êtes pas autorisé à effectuer cette action !</h3>
+            <div class=" text-center">
+                <a class="btn btn-secondary mb-4 me-2" href="{% url 'home' %}">Retour</a>
+            </div>
         </div>
-    </div>
+    {% endif %}
 {% endblock content %}

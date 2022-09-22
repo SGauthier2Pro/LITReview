@@ -206,10 +206,20 @@ def follow_user(request):
         except User.DoesNotExist:
             followed_user = None
 
-        if followed_user and follow_form.is_valid():
-            models.UserFollows.objects.create(user=request.user,
-                                              followed_user=followed_user)
-            return redirect('abonnements')
+        if followed_user:
+            already_followed = False
+            for following in followings:
+                if following.followed_user == followed_user:
+                    already_followed = True
+
+            if not already_followed:
+                if follow_form.is_valid():
+                    models.UserFollows.objects.create(
+                        user=request.user,
+                        followed_user=followed_user)
+                    return redirect('abonnements')
+            else:
+                message = "Vous suivez déjà cette utilisateur !"
         else:
             message = "l'utilisateur saisie n'existe pas !"
     context = {

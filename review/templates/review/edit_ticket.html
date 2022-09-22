@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% if ticket.user == request.user %}
     <h2 class="text-center mb-4">Modifier votre ticket</h2>
 
     <div class="d-block p-2">
@@ -26,6 +27,15 @@
             {% include 'review/partials/validation_buttons_snippet.html' with word='Envoyer' %}
         </form>
     </div>
+{% else %}
+    <h2 class="text-center mb-4">Accès non-autorisé</h2>
+    <div>
+        <h3 class="text-center mb-4">Vous n'êtes pas autorisé à effectuer cette action !</h3>
+        <div class=" text-center">
+            <a class="btn btn-secondary mb-4 me-2" href="{% url 'home' %}">Retour</a>
+        </div>
+    </div>
+{% endif %}
 {% endblock content %}
 
 <!--
